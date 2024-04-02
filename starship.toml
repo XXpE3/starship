@@ -32,6 +32,7 @@ palette = 'gruvbox_dark'
 color_fg0 = '#fbf1c7'
 color_bg1 = '#3c3836'
 color_bg3 = '#665c54'
+color_bg5 = '#1b1918'
 color_cyan = '#2F4858'
 color_blue = '#458588'
 color_aqua = '#689d6a'
@@ -43,11 +44,12 @@ color_yellow = '#d79921'
 
 [os]
 disabled = false
-style = "bg:color_orange fg:color_fg0"
+style = "bg:color_orange fg:color_bg5"
 
 [os.symbols]
 Windows = "󰍲"
 Ubuntu = "󰕈"
+Pop = "󰕈"
 SUSE = ""
 Raspbian = "󰐿"
 Mint = "󰣭"
@@ -68,11 +70,11 @@ RedHatEnterprise = "󱄛"
 
 [hostname]
 ssh_only = false
-style = "bg:color_orange fg:color_fg0"
+style = "bg:color_orange fg:color_bg5"
 format = '[ $hostname ]($style)'
 
 [directory]
-style = "fg:color_fg0 bg:color_yellow"
+style = "fg:color_bg5 bg:color_yellow"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
