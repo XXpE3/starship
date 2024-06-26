@@ -3,11 +3,11 @@
 set -e
 
 check_and_install_starship() {
-    if ! which starship &>/dev/null; then
-        echo "Starship not found, installing..."
-        curl -sS https://starship.rs/install.sh | sh
-        echo "Starship 安装完毕"
-    fi
+  if ! command -v starship &>/dev/null; then
+    echo "Starship not found, installing..."
+    curl -sS https://starship.rs/install.sh | sh
+    echo "Starship 安装完毕"
+  fi
 }
 
 download_and_update_config() {
