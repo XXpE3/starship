@@ -5,7 +5,7 @@ set -e
 check_and_install_starship() {
     if ! which starship &>/dev/null; then
         echo "Starship not found, installing..."
-        curl -sS https://raw.githubusercontent.com/XXpE3/starship/master/install.sh | sh
+        curl -sS https://starship.rs/install.sh | sh
         echo "Starship 安装完毕"
     fi
 }
