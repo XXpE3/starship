@@ -1,13 +1,17 @@
 #!/bin/bash
 
 set -e
+set -o pipefail
 
 check_and_install_starship() {
-  if ! command -v starship &>/dev/null; then
-    echo "Starship not found, installing..."
-    curl -sS https://starship.rs/install.sh | sh
-    echo "Starship 安装完毕！"
-  fi
+    if ! command -v starship &>/dev/null; then
+        printf "Starship not found, installing...\n"
+        if ! curl -sS https://starship.rs/install.sh | sh; then
+            printf "Error: Failed to install Starship\n" >&2
+            return 1
+        fi
+        printf "Starship Installation complete！\n"
+    fi
 }
 
 download_and_update_config() {
@@ -16,18 +20,18 @@ download_and_update_config() {
     local config_file="${config_dir}/starship.toml"
 
     mkdir -p "${config_dir}"
-    if [ ! -f "${config_file}" ]; then
+    if [[ ! -f "${config_file}" ]]; then
         if ! curl -s -o "${config_file}" "${url}"; then
             printf "Error: Failed to download starship.toml from %s\n" "${url}" >&2
             return 1
         fi
-        echo "Starship 配置添加完毕！"
+        printf "Starship Configuration addition is complete!\n"
     else
         if ! curl -s -o "${config_file}" "${url}"; then
             printf "Error: Failed to download starship.toml from %s\n" "${url}" >&2
             return 1
         fi
-        echo "Starship 配置更新完毕！"
+        printf "Starship Configuration update complete!\n"
     fi
 }
 
@@ -42,7 +46,9 @@ update_zshrc() {
 
 main() {
     check_and_install_starship
-    download_and_update_config
+    if ! download_and_update_config; then
+        return 1
+    fi
     update_zshrc
 }
 
