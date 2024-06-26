@@ -6,7 +6,7 @@ check_and_install_starship() {
   if ! command -v starship &>/dev/null; then
     echo "Starship not found, installing..."
     curl -sS https://starship.rs/install.sh | sh
-    echo "Starship 安装完毕"
+    echo "Starship 安装完毕！"
   fi
 }
 
@@ -21,13 +21,13 @@ download_and_update_config() {
             printf "Error: Failed to download starship.toml from %s\n" "${url}" >&2
             return 1
         fi
-        echo "Starship 配置添加完毕"
+        echo "Starship 配置添加完毕！"
     else
         if ! curl -s -o "${config_file}" "${url}"; then
             printf "Error: Failed to download starship.toml from %s\n" "${url}" >&2
             return 1
         fi
-        echo "Starship 配置更新完毕"
+        echo "Starship 配置更新完毕！"
     fi
 }
 
