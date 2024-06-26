@@ -21,7 +21,7 @@ download_and_update_config() {
             printf "Error: Failed to download starship.toml from %s\n" "${url}" >&2
             return 1
         fi
-        echo "Starship 安装完毕"
+        echo "Starship 配置添加完毕"
     else
         if ! curl -s -o "${config_file}" "${url}"; then
             printf "Error: Failed to download starship.toml from %s\n" "${url}" >&2
