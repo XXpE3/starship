@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -e
-set -o pipefail
 
 check_and_install_starship() {
     if ! command -v starship &>/dev/null; then
